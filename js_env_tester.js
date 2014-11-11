@@ -134,11 +134,35 @@ var natives = [
 	},
 	{
 		name: 'String.indexOf',
-		ref: String.prototype.indexOf
+		ref: String.prototype.indexOf,
+		isValid: function(indexOf) {
+			var s = "Hello";
+			var index_ok = (
+				s.indexOf('H') === 0 && 
+				s.indexOf('l') === 2 && 
+				s.indexOf('o') === 4
+			);
+			var not_found_ok = s.indexOf('z') === -1;
+			var length_one_ok = 'a'.indexOf('a') === 0;
+			var length_zero_ok = ''.indexOf('a') === -1;
+			return index_ok && not_found_ok && length_one_ok && length_zero_ok;
+		}
 	},
 	{
 		name: 'String.lastIndexOf',
-		ref: String.prototype.lastIndexOf
+		ref: String.prototype.lastIndexOf,
+		isValid: function(lastIndexOf) {
+			var s = "Hello";
+			var index_ok = (
+				s.lastIndexOf('H') === 0 && 
+				s.lastIndexOf('l') === 3 && 
+				s.lastIndexOf('o') === 4
+			);
+			var not_found_ok = s.lastIndexOf('z') === -1;
+			var length_one_ok = 'a'.lastIndexOf('a') === 0;
+			var length_zero_ok = ''.lastIndexOf('a') === -1;
+			return index_ok && not_found_ok && length_one_ok && length_zero_ok;
+		}
 	},
 	{
 		name: 'String.substring',
