@@ -174,7 +174,30 @@ var natives = [
 	},
 	{
 		name: 'String.replace',
-		ref: String.prototype.replace
+		ref: String.prototype.replace,
+		isValid: function() {
+			// replace() should not throw on no match
+			// example of bad implementation: es5-shim 4.0.3
+			// https://github.com/es-shims/es5-shim/issues/272
+			try {
+				'x'.replace(/(y)/g, 'oops');
+			}
+			catch (e) {
+				return false;
+			}
+			return true;
+		},
+		getQuirks: function() {
+			return {
+				reportsGroupsCorrectly: (function() {
+					var groups = [];
+					'x'.replace(/x(.)?/g, function (match, group) {
+						groups.push(group);
+					});
+					return groups.length === 1 && typeof groups[0] === 'undefined';
+				})()
+			};
+		}
 	},
 	{
 		name: 'String.match',
