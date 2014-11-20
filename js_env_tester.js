@@ -249,7 +249,7 @@ styles.textContent = ''
 	+ '.js_env_report tr.section th { background: #000; color: white; }\n'
 	+ '.js_env_report tr.even   { background: #EEE }\n'
 	+ '.js_env_report tr.error  { background: #FF9494 }\n'
-	+ '.js_env_report tr.waning { background: #FFC994 }\n'
+	+ '.js_env_report tr.warning { background: #FFC994 }\n'
 	+ '.js_env_report td.function { font-family: monospace }\n'
 	+ '.js_env_report td.good { color: #8AC007 }\n'
 	+ '.js_env_report td.bad { color: brown }\n';
