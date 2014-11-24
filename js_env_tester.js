@@ -20,8 +20,10 @@ var natives = [
 			var f;
 			f = parseFloat('1');
 			var returns_number = typeof(f) === "number";
+
 			f = parseFloat('1.2');
-			var returns_number = returns_number && (typeof(f) === "number");
+			returns_number = returns_number && (typeof(f) === "number");
+
 			f = parseFloat('abc');
 			var returns_NaN = isNaN(f);
 			return returns_number && returns_NaN;
@@ -127,6 +129,78 @@ var natives = [
 	},
 
 /*=====================================================================
+ * Array
+=====================================================================*/
+	{
+		section: 'Array'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: Array,
+		isNative: isNativeClass
+	},
+	{
+		name: 'valueOf',
+		ref: Array.prototype.valueOf
+	},
+	{
+		name: 'toString',
+		ref: Array.prototype.toString
+	},
+	{
+		name: 'push',
+		ref: Array.prototype.push
+	},
+	{
+		name: 'pop',
+		ref: Array.prototype.pop
+	},
+	{
+		name: 'shift',
+		ref: Array.prototype.shift
+	},
+	{
+		name: 'unshift',
+		ref: Array.prototype.unshift
+	},
+	{
+		name: 'join',
+		ref: Array.prototype.join
+	},
+	{
+		name: 'slice',
+		ref: Array.prototype.slice
+	},
+	{
+		name: 'splice',
+		ref: Array.prototype.splice
+	},
+	{
+		name: 'sort',
+		ref: Array.prototype.sort
+	},
+	{
+		name: 'reverse',
+		ref: Array.prototype.reverse
+	},
+	{
+		name: 'concat',
+		ref: Array.prototype.concat
+	},
+	{
+		name: 'reduce',
+		ref: Array.prototype.reduce
+	},
+	{
+		name: 'map',
+		ref: Array.prototype.map
+	},
+	{
+		name: 'forEach',
+		ref: Array.prototype.forEach
+	},
+
+/*=====================================================================
  * Strings
 =====================================================================*/
 	{
@@ -138,8 +212,8 @@ var natives = [
 		isValid: function(indexOf) {
 			var s = "Hello";
 			var index_ok = (
-				s.indexOf('H') === 0 && 
-				s.indexOf('l') === 2 && 
+				s.indexOf('H') === 0 &&
+				s.indexOf('l') === 2 &&
 				s.indexOf('o') === 4
 			);
 			var not_found_ok = s.indexOf('z') === -1;
@@ -154,8 +228,8 @@ var natives = [
 		isValid: function(lastIndexOf) {
 			var s = "Hello";
 			var index_ok = (
-				s.lastIndexOf('H') === 0 && 
-				s.lastIndexOf('l') === 3 && 
+				s.lastIndexOf('H') === 0 &&
+				s.lastIndexOf('l') === 3 &&
 				s.lastIndexOf('o') === 4
 			);
 			var not_found_ok = s.lastIndexOf('z') === -1;
@@ -243,7 +317,7 @@ var head = document.getElementsByTagName('head')[0];
 var body = document.getElementsByTagName('body')[0];
 
 var styles = document.createElement('style');
-styles.textContent = '' 
+styles.textContent = ''
 	+ '.js_env_report { color: black }\n'
 	+ '.js_env_report th, .js_env_report td { text-align: center }\n'
 	+ '.js_env_report tr.section th { background: #000; color: white; }\n'
@@ -295,7 +369,7 @@ function addHeaderRow(section_name) {
 function addRow(item) {
 	var row = document.createElement('tr');
 	row_idx++;
-	var classes = []
+	var classes = [];
 	if (row_idx % 2 === 0) classes.push('even');
 	if (item.isValid === false) classes.push('error');
 	else if (item.isNative === false) classes.push('warning');
@@ -352,6 +426,14 @@ function default_exists(ref) {
 
 function default_isNative(func) {
 	return !func.prototype;
+}
+
+function isNativeClass(func) {
+	// methods of native classes are not enumerable. If we detect something in the prototype, there is a risk
+	var contains_native_code = /\[native code\]/i.test(func.toString());
+	var is_augmented = false;
+	for (var k in func.prototype) { is_augmented = true; break; }
+	return contains_native_code && !is_augmented;
 }
 
 })(this);
