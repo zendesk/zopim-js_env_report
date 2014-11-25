@@ -35,100 +35,6 @@ var natives = [
 	},
 
 /*=====================================================================
- * Math Object
-=====================================================================*/
-
-	{
-		section: 'Math'
-	},
-	{
-		name: 'Math.cos',
-		ref: Math.cos
-	},
-	{
-		name: 'Math.sin',
-		ref: Math.sin
-	},
-	{
-		name: 'Math.tan',
-		ref: Math.tan
-	},
-	{
-		name: 'Math.acos',
-		ref: Math.acos
-	},
-	{
-		name: 'Math.asin',
-		ref: Math.asin
-	},
-	{
-		name: 'Math.atan',
-		ref: Math.atan
-	},
-	{
-		name: 'Math.atan2',
-		ref: Math.atan2
-	},
-	{
-		name: 'Math.min',
-		ref: Math.min
-	},
-	{
-		name: 'Math.max',
-		ref: Math.max
-	},
-	{
-		name: 'Math.floor',
-		ref: Math.floor
-	},
-	{
-		name: 'Math.ceil',
-		ref: Math.ceil
-	},
-	{
-		name: 'Math.round',
-		ref: Math.round
-	},
-	{
-		name: 'Math.exp',
-		ref: Math.exp
-	},
-	{
-		name: 'Math.log',
-		ref: Math.log
-	},
-	{
-		name: 'Math.pow',
-		ref: Math.pow
-	},
-	{
-		name: 'Math.sqrt',
-		ref: Math.sqrt
-	},
-	{
-		name: 'Math.random',
-		ref: Math.random
-	},
-
-/*=====================================================================
- * Date Object
-=====================================================================*/
-/*=====================================================================
- * JSON Object
-=====================================================================*/
-	{
-		section: 'JSON'
-	},
-	{
-		name: 'JSON.stringify',
-		ref: JSON.stringify
-	},
-	{
-		name: 'JSON.parse',
-		ref: JSON.parse
-	},
-
-/*=====================================================================
  * Object
 =====================================================================*/
 	{
@@ -334,7 +240,101 @@ var natives = [
 		ref: String.prototype.charCodeAt
 	},
 
-	null
+/*=====================================================================
+ * JSON Object
+=====================================================================*/
+	{
+		section: 'JSON'
+	},
+	{
+		name: 'JSON.stringify',
+		ref: JSON.stringify
+	},
+	{
+		name: 'JSON.parse',
+		ref: JSON.parse
+	},
+
+/*=====================================================================
+ * Math Object
+=====================================================================*/
+
+	{
+		section: 'Math'
+	},
+	{
+		name: 'Math.cos',
+		ref: Math.cos
+	},
+	{
+		name: 'Math.sin',
+		ref: Math.sin
+	},
+	{
+		name: 'Math.tan',
+		ref: Math.tan
+	},
+	{
+		name: 'Math.acos',
+		ref: Math.acos
+	},
+	{
+		name: 'Math.asin',
+		ref: Math.asin
+	},
+	{
+		name: 'Math.atan',
+		ref: Math.atan
+	},
+	{
+		name: 'Math.atan2',
+		ref: Math.atan2
+	},
+	{
+		name: 'Math.min',
+		ref: Math.min
+	},
+	{
+		name: 'Math.max',
+		ref: Math.max
+	},
+	{
+		name: 'Math.floor',
+		ref: Math.floor
+	},
+	{
+		name: 'Math.ceil',
+		ref: Math.ceil
+	},
+	{
+		name: 'Math.round',
+		ref: Math.round
+	},
+	{
+		name: 'Math.exp',
+		ref: Math.exp
+	},
+	{
+		name: 'Math.log',
+		ref: Math.log
+	},
+	{
+		name: 'Math.pow',
+		ref: Math.pow
+	},
+	{
+		name: 'Math.sqrt',
+		ref: Math.sqrt
+	},
+	{
+		name: 'Math.random',
+		ref: Math.random
+	},
+
+/*=====================================================================
+ * Date Object
+=====================================================================*/
+	null // placed there so we can have a comma after every block above -_-'
 ];
 
 var head = document.getElementsByTagName('head')[0];
