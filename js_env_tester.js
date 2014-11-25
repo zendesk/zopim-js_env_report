@@ -129,6 +129,30 @@ var natives = [
 	},
 
 /*=====================================================================
+ * Object
+=====================================================================*/
+	{
+		section: 'Object'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: Object,
+		isNative: isNativeClass
+	},
+	{
+		name: 'valueOf',
+		ref: Object.prototype.valueOf
+	},
+	{
+		name: 'toString',
+		ref: Object.prototype.toString
+	},
+	{
+		name: 'create',
+		ref: Object.prototype.create
+	},
+
+/*=====================================================================
  * Array
 =====================================================================*/
 	{
