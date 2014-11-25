@@ -173,6 +173,11 @@ var natives = [
 		section: 'String'
 	},
 	{
+		name: '[Clean Prototype]',
+		ref: String,
+		isNative: isNativeClass
+	},
+	{
 		name: 'String.indexOf',
 		ref: String.prototype.indexOf,
 		isValid: function(indexOf) {
