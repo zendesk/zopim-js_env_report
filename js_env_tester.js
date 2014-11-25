@@ -33,6 +33,42 @@ var natives = [
 		name: 'parseInt',
 		ref: parseInt
 	},
+	{
+		name: 'escape',
+		ref: parseInt
+	},
+	{
+		name: 'unescape',
+		ref: parseInt
+	},
+	{
+		name: 'decodeURI',
+		ref: parseInt
+	},
+	{
+		name: 'decodeURIComponent',
+		ref: parseInt
+	},
+	{
+		name: 'encodeURI',
+		ref: parseInt
+	},
+	{
+		name: 'encodeURIComponent',
+		ref: parseInt
+	},
+	{
+		name: 'isFinite',
+		ref: parseInt
+	},
+	{
+		name: 'isNaN',
+		ref: parseInt
+	},
+	{
+		name: 'eval',
+		ref: parseInt
+	},
 
 /*=====================================================================
  * Object
