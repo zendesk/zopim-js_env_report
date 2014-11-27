@@ -71,7 +71,7 @@ var natives = [
 	},
 
 /*=====================================================================
- * Object
+ * Object Class
 =====================================================================*/
 	{
 		section: 'Object'
@@ -90,8 +90,72 @@ var natives = [
 		ref: Object.prototype.toString
 	},
 	{
+		name: 'isPrototypeOf',
+		ref: Object.prototype.isPrototypeOf
+	},
+	{
+		name: 'hasOwnProperty',
+		ref: Object.prototype.hasOwnProperty
+	},
+	{
+		name: 'propertyIsEnumerable',
+		ref: Object.prototype.propertyIsEnumerable
+	},
+
+/*=====================================================================
+ * Object Namespace
+=====================================================================*/
+	{
 		name: 'create',
-		ref: Object.prototype.create
+		ref: Object.create
+	},
+	{
+		name: 'keys',
+		ref: Object.keys
+	},
+	{
+		name: 'getOwnPropertyNames',
+		ref: Object.getOwnPropertyNames
+	},
+	{
+		name: 'freeze',
+		ref: Object.freeze
+	},
+	{
+		name: 'isFrozen',
+		ref: Object.isFrozen
+	},
+	{
+		name: 'seal',
+		ref: Object.seal
+	},
+	{
+		name: 'isSealed',
+		ref: Object.isSealed
+	},
+	{
+		name: 'preventExtensions',
+		ref: Object.preventExtensions
+	},
+	{
+		name: 'isExtensible',
+		ref: Object.isExtensible
+	},
+	{
+		name: 'getPrototypeOf',
+		ref: Object.getPrototypeOf
+	},
+	{
+		name: 'defineProperty',
+		ref: Object.defineProperty
+	},
+	{
+		name: 'defineProperties',
+		ref: Object.defineProperties
+	},
+	{
+		name: 'getOwnPropertyDescriptor',
+		ref: Object.getOwnPropertyDescriptor
 	},
 
 /*=====================================================================
