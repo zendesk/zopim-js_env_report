@@ -346,6 +346,70 @@ var natives = [
 	},
 
 /*=====================================================================
+ * Number Class
+=====================================================================*/
+	{
+		section: 'Number'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: Number,
+		isNative: isNativeClass
+	},
+	{
+		name: 'valueOf',
+		ref: Number.prototype.valueOf
+	},
+	{
+		name: 'toExponential',
+		ref: Number.prototype.toExponential
+	},
+	{
+		name: 'toFixed',
+		ref: Number.prototype.toFixed
+	},
+	{
+		name: 'toPrecision',
+		ref: Number.prototype.toPrecision
+	},
+	{
+		name: 'toString',
+		ref: Number.prototype.toString
+	},
+	{
+		name: 'toLocaleString',
+		ref: Number.prototype.toLocaleString
+	},
+
+/*=====================================================================
+ * Function Class
+=====================================================================*/
+	{
+		section: 'Function'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: Function,
+		isNative: isNativeClass
+	},
+	{
+		name: 'apply',
+		ref: Function.prototype.apply
+	},
+	{
+		name: 'call',
+		ref: Function.prototype.call
+	},
+	{
+		name: 'bind',
+		ref: Function.prototype.bind
+	},
+	{
+		name: 'toString',
+		ref: Function.prototype.toString
+	},
+
+/*=====================================================================
  * JSON Object
 =====================================================================*/
 	{
