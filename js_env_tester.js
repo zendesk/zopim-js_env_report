@@ -79,7 +79,8 @@ var natives = [
 	{
 		name: '[Clean Prototype]',
 		ref: Object,
-		isNative: isNativeClass
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
 	},
 	{
 		name: 'valueOf',
@@ -167,7 +168,8 @@ var natives = [
 	{
 		name: '[Clean Prototype]',
 		ref: Array,
-		isNative: isNativeClass
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
 	},
 	{
 		name: 'valueOf',
@@ -239,7 +241,8 @@ var natives = [
 	{
 		name: '[Clean Prototype]',
 		ref: String,
-		isNative: isNativeClass
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
 	},
 	{
 		name: 'String.indexOf',
@@ -354,7 +357,8 @@ var natives = [
 	{
 		name: '[Clean Prototype]',
 		ref: Number,
-		isNative: isNativeClass
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
 	},
 	{
 		name: 'valueOf',
@@ -390,7 +394,8 @@ var natives = [
 	{
 		name: '[Clean Prototype]',
 		ref: Function,
-		isNative: isNativeClass
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
 	},
 	{
 		name: 'apply',
@@ -624,9 +629,15 @@ function default_isNative(func) {
 function isNativeClass(func) {
 	// methods of native classes are not enumerable. If we detect something in the prototype, there is a risk
 	var contains_native_code = /\[native code\]/i.test(func.toString());
-	var is_augmented = false;
-	for (var k in func.prototype) { is_augmented = true; break; }
+	var enumerable_methods = getPrototypeAugmentation(func);
+	var is_augmented = enumerable_methods.length > 0;
 	return contains_native_code && !is_augmented;
+}
+
+function getPrototypeAugmentation(func) {
+	var enumerable_methods = [];
+	for (var k in func.prototype) enumerable_methods[enumerable_methods.length] = k;
+	return enumerable_methods;
 }
 
 })(this);
