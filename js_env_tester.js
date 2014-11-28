@@ -511,57 +511,61 @@ var natives = [
 	null // placed there so we can have a comma after every block above -_-'
 ];
 
-var head = document.getElementsByTagName('head')[0];
-var body = document.getElementsByTagName('body')[0];
-
-var styles = document.createElement('style');
-styles.textContent = ''
-	+ '.js_env_report { color: black }\n'
-	+ '.js_env_report th, .js_env_report td { text-align: center }\n'
-	+ '.js_env_report tr.section th { background: #000; color: white; }\n'
-	+ '.js_env_report tr.even   { background: #EEE }\n'
-	+ '.js_env_report tr.error  { background: #FF9494 }\n'
-	+ '.js_env_report tr.warning { background: #FFC994 }\n'
-	+ '.js_env_report td.function { font-family: monospace }\n'
-	+ '.js_env_report td.good { color: #8AC007 }\n'
-	+ '.js_env_report td.bad { color: brown }\n';
-head.appendChild(styles);
-
-var report_container = document.createElement('div');
-report_container.style.position = 'fixed';
-report_container.style.top = 0;
-report_container.style.left = 0;
-report_container.style.background = 'white';
-report_container.style.borderBottom = 'solid 2px black';
-report_container.style.width = '100%';
-report_container.style.height = '50%';
-report_container.style.overflow = 'auto';
-report_container.style.zIndex = 999999999;
-body.appendChild(report_container);
-
-var report_table = document.createElement('table');
-
-report_table.style.width = '100%';
-report_table.className = 'js_env_report';
-report_table.innerHTML = '<tr>'
-	+ '<th>Feature</th>'
-	+ '<th>exists</th>'
-	+ '<th>is&nbsp;native</th>'
-	+ '<th>is&nbsp;valid</th>'
-	+ '<th>quirks</th>'
-	+ '</tr>';
-
+// the 4 vars below are required for report processing and formatting
+// they are used by the functions addRow() and addHeaderRow()
 var
 	good    = '✓',
 	bad     = '𐄂',
 	neutral = '-',
 	row_idx = 0;
 
+
+var head = document.getElementsByTagName('head')[0];
+var styles = document.createElement('style');
+styles.textContent = ''
+	+ '.js_env_report { position: fixed; top: 0; left: 0; color: black; background: white; border-bottom: solid 2px black; width: 100%; height: 50%; overflow: auto; z-index: 999999999 }\n'
+	+ '.js_env_report table { width: 100%; color: inherit; background: inherit }\n'
+	+ '.js_env_report th, .js_env_report td { text-align: center }\n'
+	+ '.js_env_report tr.section th { background: #000; color: white; }\n'
+	+ '.js_env_report tr.even     { background: #EEE }\n'
+	+ '.js_env_report tr.error    { background: #FF9494 }\n'
+	+ '.js_env_report tr.warning  { background: #FFC994 }\n'
+	+ '.js_env_report td.function { font-family: monospace }\n'
+	+ '.js_env_report td.good { color: #8AC007 }\n'
+	+ '.js_env_report td.bad { color: brown }\n';
+head.appendChild(styles);
+
+var report_container = document.createElement('div');
+report_container.className = 'js_env_report';
+
+var report_table = document.createElement('table');
+report_container.appendChild(report_table);
+
+var report_tbody = document.createElement('tbody');
+report_tbody.innerHTML = '<tr>'
+	+ '<th>Feature</th>'
+	+ '<th>exists</th>'
+	+ '<th>is&nbsp;native</th>'
+	+ '<th>is&nbsp;valid</th>'
+	+ '<th>quirks</th>'
+	+ '</tr>';
+report_table.appendChild(report_tbody);
+
+report = run_tests(natives); // this is the 
+
+// all done, now place report visually into document
+var body = document.getElementsByTagName('body')[0];
+body.appendChild(report_container);
+
+console.log(report); // todo, is there anyway to stringify the report so a customer or CSR can email it to us?
+
+
+
 function addHeaderRow(section_name) {
 	var row = document.createElement('tr');
 	row.className = 'section';
 	row.innerHTML = '<th colspan="5">' + section_name + '</th>';
-	report_table.appendChild(row);
+	report_tbody.appendChild(row);
 }
 
 function addRow(item) {
@@ -580,10 +584,10 @@ function addRow(item) {
 		+ '<td class="' + (item.isValid === null ? '' : item.isValid  ? 'good' : 'bad') + '">' + (item.isValid === null ? neutral : item.isValid ? good : bad) + '</td>'
 		+ '<td>' + (item.quirks ? JSON.stringify(item.quirks) : '') + '</td>';
 
-	report_table.appendChild(row);
+	report_tbody.appendChild(row);
 }
 
-function test(definition) {
+function run_tests(definition) {
 	var report_results = [];
 
 	for (var idx=0; idx<natives.length; idx++) {
@@ -611,12 +615,6 @@ function test(definition) {
 
 	return report_results;
 }
-
-report = test(natives);
-
-report_container.appendChild(report_table);
-
-console.log(report); // todo, is there anyway to stringify the report so a customer or CSR can email it to us?
 
 function default_exists(ref) {
 	return !!ref;
