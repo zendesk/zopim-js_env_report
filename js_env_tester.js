@@ -621,7 +621,7 @@ function default_exists(ref) {
 }
 
 function default_isNative(func) {
-	return !func.prototype;
+	return !('prototype' in func);
 }
 
 function isNativeClass(func) {
