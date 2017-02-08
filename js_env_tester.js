@@ -415,6 +415,79 @@ var natives = [
 	},
 
 /*=====================================================================
+ * Event class
+=====================================================================*/
+	{
+		section: 'Event'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: Event,
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
+	},
+	{
+		name: 'initEvent',
+		ref: Event.prototype.initEvent
+	},
+	{
+		name: 'preventDefault',
+		ref: Event.prototype.preventDefault
+	},
+	{
+		name: 'stopImmediatePropagation',
+		ref: Event.prototype.stopImmediatePropagation
+	},
+	{
+		name: 'stopPropagation',
+		ref: Event.prototype.stopPropagation
+	},
+	{
+		name: 'toString',
+		ref: Event.prototype.toString
+	},
+
+/*=====================================================================
+ * CustomEvent class
+=====================================================================*/
+	{
+		section: 'CustomEvent'
+	},
+	{
+		name: '[Clean Prototype]',
+		ref: CustomEvent,
+		isNative: isNativeClass,
+		getQuirks: getPrototypeAugmentation
+	},
+	{
+		name: 'initCustomEvent',
+		ref: CustomEvent.prototype.initCustomEvent
+	},
+
+	// methods inherited from Event below
+
+	{
+		name: 'initEvent',
+		ref: CustomEvent.prototype.initEvent
+	},
+	{
+		name: 'preventDefault',
+		ref: CustomEvent.prototype.preventDefault
+	},
+	{
+		name: 'stopImmediatePropagation',
+		ref: CustomEvent.prototype.stopImmediatePropagation
+	},
+	{
+		name: 'stopPropagation',
+		ref: CustomEvent.prototype.stopPropagation
+	},
+	{
+		name: 'toString',
+		ref: CustomEvent.prototype.toString
+	},
+
+/*=====================================================================
  * JSON Object
 =====================================================================*/
 	{
@@ -508,6 +581,13 @@ var natives = [
 /*=====================================================================
  * Date Object
 =====================================================================*/
+
+// TODO
+
+/*=====================================================================
+ * Don't change code below this line
+=====================================================================*/
+
 	null // placed there so we can have a comma after every block above -_-'
 ];
 
