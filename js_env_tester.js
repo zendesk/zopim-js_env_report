@@ -35,39 +35,39 @@ var natives = [
 	},
 	{
 		name: 'escape',
-		ref: parseInt
+		ref: escape
 	},
 	{
 		name: 'unescape',
-		ref: parseInt
+		ref: unescape
 	},
 	{
 		name: 'decodeURI',
-		ref: parseInt
+		ref: decodeURI
 	},
 	{
 		name: 'decodeURIComponent',
-		ref: parseInt
+		ref: decodeURIComponent
 	},
 	{
 		name: 'encodeURI',
-		ref: parseInt
+		ref: encodeURI
 	},
 	{
 		name: 'encodeURIComponent',
-		ref: parseInt
+		ref: encodeURIComponent
 	},
 	{
 		name: 'isFinite',
-		ref: parseInt
+		ref: isFinite
 	},
 	{
 		name: 'isNaN',
-		ref: parseInt
+		ref: isNaN
 	},
 	{
 		name: 'eval',
-		ref: parseInt
+		ref: eval
 	},
 
 /*=====================================================================
