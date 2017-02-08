@@ -712,9 +712,19 @@ function isNativeClass(func) {
 	return contains_native_code && !is_augmented;
 }
 
+function isFunction(func) {
+	return (typeof func === 'function');
+}
+
 function getPrototypeAugmentation(func) {
-	var enumerable_methods = [];
-	for (var k in func.prototype) enumerable_methods[enumerable_methods.length] = k;
+	var enumerable_methods = [], method;
+	for (var k in func.prototype) {
+		method = null;
+		try { method = func.prototype[k] } catch(e) { } // -_- throws for simple access, e.g. CustomEvent.prototype['type']
+		if (!isFunction(method)) continue;
+		if (default_isNative(method)) continue; // we won't list native funcs, but the fact that they are enumerable is weird :/
+		enumerable_methods[enumerable_methods.length] = k;
+	}
 	return enumerable_methods;
 }
 
