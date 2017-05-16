@@ -31,7 +31,39 @@ var natives = [
 	},
 	{
 		name: 'parseInt',
-		ref: parseInt
+		ref: parseInt,
+		isValid: function(parseFloat) {
+			var i, ok = true;
+
+			i = parseInt('1');
+			ok = ok && (i === 1);
+
+			i = parseInt('1.2');
+			ok = ok && (i === 1);
+
+			i = parseInt('abc');
+			ok = ok && isNaN(i);
+
+			i = parseInt('10', 2);
+			ok = ok && (i === 2);
+
+			i = parseInt('10', 8);
+			ok = ok && (i === 8);
+
+			i = parseInt('10', 10);
+			ok = ok && (i === 10);
+
+			i = parseInt('10', 16);
+			ok = ok && (i === 16);
+
+			i = parseInt('abc', 16);
+			ok = ok && (i === 2748);
+
+			i = parseInt('0xabc');
+			ok = ok && (i === 2748);
+
+			return ok;
+		}
 	},
 	{
 		name: 'escape',
