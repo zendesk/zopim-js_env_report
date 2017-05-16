@@ -1,6 +1,6 @@
 (function(window){
 
-// Definition: 
+// Definition:
 // each tests contains an object, containing:
 // * name: what we are testing
 // * ref: the property we're trying to access
@@ -663,7 +663,7 @@ report_tbody.innerHTML = '<tr>'
 	+ '</tr>';
 report_table.appendChild(report_tbody);
 
-report = run_tests(natives); // this is the 
+report = run_tests(natives); // this is the
 
 // all done, now place report visually into document
 var body = document.getElementsByTagName('body')[0];
